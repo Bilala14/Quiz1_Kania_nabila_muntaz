@@ -1,13 +1,35 @@
+<?php
+// Membuat Koneksi  database dengan php
+include("koneksi.php");
+
+// Mengambil semua value dari form dan dimasukkan ke masing-masing variable
+$nidn= $_POST['nidn'];
+$nama= $_POST['nama'];
+$rumpun= $_POST['rumpun'];
+$tempat = $_POST['tempat'];
+$tanggal = $_POST['tanggal'];
+$email = $_POST['email'];
+
+
+// Menuliskan query simpan
+$simpan = "INSERT INTO tb_dosen(nidn,nama,rumpun,tempat,tanggal,email)
+VALUES('$nidn','$nama','$rumpun','$tempat','$tanggal','$email')";
+
+// Menjalankan query
+mysqli_query($koneksi,$simpan);
+
+// Pesan berhasil/gagal
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz 1</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-danger-subtle ">
+<nav class="navbar navbar-expand-lg bg-danger-subtle  text-danger-emphasis">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Form Dosen</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,51 +67,50 @@
 </nav>
     <div class="container">
     <div class="row mt-5">
-        <div class="col-6 m-auto"></div>
+        <div class="col-6 m-auto">
             <div class="card">
     <div class="card-header" >
        <h3> Form Dosen</h3>
     </div>
     <div class="card-body">
-        <form action="proses_index.php" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">NIDN</label>
-        <input type="text" name="nidn" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Nama Lengkap</label>
-        <input type="text" name="nama" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Rumpun</label>
-        <select name="rumpun" id="" class="form-control">
-            <option value="">Pilih Rumpun</option>
-            <option value="Komputer">Komputer</option>
-            <option value="Akuntansi">Akuntansi</option>
-            <option value="Manajemen">Manajemen</option>
-            <option value="Perpajakan">Perpajakan</option>
-            <option value="Bisnis">Bisnis</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Tempat Lahir</label>
-        <input type="text" name="tempat" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Tanggal Lahir</label>
-        <input type="date" name="tanggal" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" id="exampleInputPassword1">
-    </div>
-    <button type="submit" class="btn btn-primary">Sumbit</button>
-    </form>
+    <table class="table">
+
+ <tbody>
+ <tr>
+    <td scope="row">NIDN</td>
+    <th>:<?=$nidn?></th>
+</tr>
+<tr>
+    <td scope="row">Nama Lengkap</td>
+    <th>: <?=$nama?></th>
+</tr>
+<tr>
+    <td scope="row">Rumpun</td>
+    <th>:<?=$rumpun?></th>
+</tr>
+<tr>
+    <td scope="row">Tempat lahir</td>
+    <th>: <?=$tempat?></th>
+</tr>
+<tr>
+    <td scope="row">Tanggal Lahir</td>
+    <th>:<?=$tanggal?></th>
+</tr>
+<tr>
+    <td scope="row">Email</td>
+    <th>:<?=$email?></th>
+</tr>
+
+</tbody>
+    
+</table>
+<a href="index.php" class="btn btn-warning btn-sm">Kembali</a>
     </div>
     </div>
     </div>
     </div>
     </div>
+
 
    <script>src="js/bootstrap.js"</script> 
    <script>src="js/bootstrap.bundle.js"</script> 
